@@ -1,16 +1,19 @@
+let counter = 0;
 const button = document.querySelector("button");
+let countContainer = document.querySelector("span.count");
 
 button.onclick = function () {
-  button.disabled = true;
-  let counter = document.querySelector("span.count");
+  event.target.disabled = true;
 
-  setInterval(function () {
-    for (let i = 1; i <= 7; i++) {
-      counter.innerHTML = i;
+  counter = 0;
+
+  const intervalId = setInterval(function () {
+    counter++;
+    countContainer.innerHTML = counter;
+
+    if (counter === 7) {
+      clearInterval(intervalId);
+      button.disabled = false;
     }
-  }, 2000);
-
-  if ((i = 7)) {
-    button.disabled = false;
-  }
+  }, 500);
 };
